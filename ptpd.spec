@@ -23,13 +23,12 @@ PTPd can run on most 32-bit or 64-bit, little- or big-endian processors. It
 does not require an FPU, so it is great for embedded processors.
 
 %prep
-%setup -a 0
-# add in fedora init script and sysconfig
+# extract first source implicitly and add in fedora init script and sysconfig
 %setup -a 1
 
 %build
 cd src
-make ptpd
+CFLAGS="%{optflags}" make ptpd
 
 
 %install
@@ -39,14 +38,10 @@ mkdir -p  %{buildroot}%{_initrddir}
 mkdir -p  %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_mandir}/man8/
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
-cp -p %{_builddir}/%{name}-%{version}/etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
-cp -p %{_builddir}/%{name}-%{version}/src/ptpd %{buildroot}/%{_bindir}
-cp -p %{_builddir}/%{name}-%{version}/src/ptpd.8 %{buildroot}/%{_mandir}/man8/
-cp -p %{_builddir}/%{name}-%{version}/COPYRIGHT %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/README %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/RELEASE_NOTES %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/ChangeLog %{buildroot}%{_defaultdocdir}/%{name}-%{version}
+cp -p etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
+cp -p etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
+cp -p src/ptpd %{buildroot}/%{_bindir}
+cp -p src/ptpd.8 %{buildroot}/%{_mandir}/man8/
 
 %clean
 rm -rf %{buildroot}
@@ -65,5 +60,6 @@ rm -rf %{buildroot}
 - Cleaned up description
 - Moved docs to use %doc tag
 - Cleaned up %build section
+- Cleaned up the src and init/sysconfig extraction
 * Sun Nov 21 2010 Jon Kent <jon.kent at, gmail.com> 1.1.0-1
 - First release of ptpd for Fedora
