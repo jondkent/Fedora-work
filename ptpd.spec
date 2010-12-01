@@ -4,7 +4,7 @@ Release: 1%{?dist}
 Packager: Jon Kent
 Summary: PTPd implements the Precision Time protocol (PTP) as defined by the IEEE 1588
 
-Group: System Environment/Time
+Group: System Environment/Daemons
 License: BSD
 URL: http://ptpd.sourceforge.net/
 Source0: http://sourceforge.net/projects/ptpd/files/ptpd/1.1.0/ptpd-1.1.0.tar.gz	
