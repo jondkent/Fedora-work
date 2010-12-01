@@ -8,7 +8,7 @@ Group: System Environment/Time
 License: BSD
 URL: http://ptpd.sourceforge.net/
 Source0: http://sourceforge.net/projects/ptpd/files/ptpd/1.1.0/ptpd-1.1.0.tar.gz	
-Source1: /home/jon/fedora/ptpd/patches/ptpd-etc-patch.tar.gz
+Source1: http://www2.xp-dev.com/sc/browse/105044/1.1.0-1/ptpd-etc-patch.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
