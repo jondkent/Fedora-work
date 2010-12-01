@@ -1,7 +1,6 @@
 Name: ptpd
 Version: 1.1.0	
 Release: 1%{?dist}
-Packager: Jon Kent
 Summary: PTPd implements the Precision Time protocol (PTP) as defined by the IEEE 1588
 
 Group: System Environment/Daemons
@@ -12,11 +11,16 @@ Source1: http://www2.xp-dev.com/sc/browse/105044/1.1.0-1/ptpd-etc-patch.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 %description
-The PTP daemon (PTPd) implements the Precision Time protocol (PTP) as defined by the relevant IEEE 1588 standard. PTP was developed to provide very precise time coordination of LAN connected computers.
+The PTP daemon (PTPd) implements the Precision Time protocol (PTP) as defined 
+by the relevant IEEE 1588 standard. PTP was developed to provide very precise
+time coordination of LAN connected computers.
 
-PTPd is a complete implementation of the IEEE 1588 specification for a standard (non-boundary) clock. PTPd has been tested with and is known to work properly with other IEEE 1588 implementations.
+PTPd is a complete implementation of the IEEE 1588 specification for a standard 
+(non-boundary) clock. PTPd has been tested with and is known to work properly 
+with other IEEE 1588 implementations.
 
-PTPd can run on most 32-bit or 64-bit, little- or big-endian processors. It does not require an FPU, so it is great for embedded processors.
+PTPd can run on most 32-bit or 64-bit, little- or big-endian processors. It 
+does not require an FPU, so it is great for embedded processors.
 
 %prep
 %setup -a 0
@@ -24,7 +28,7 @@ PTPd can run on most 32-bit or 64-bit, little- or big-endian processors. It does
 %setup -a 1
 
 %build
-cd %{_builddir}/%{name}-%{version}/src
+cd src
 make ptpd
 
 
@@ -43,7 +47,6 @@ cp -p %{_builddir}/%{name}-%{version}/COPYRIGHT %{buildroot}%{_defaultdocdir}/%{
 cp -p %{_builddir}/%{name}-%{version}/README %{buildroot}%{_defaultdocdir}/%{name}-%{version}
 cp -p %{_builddir}/%{name}-%{version}/RELEASE_NOTES %{buildroot}%{_defaultdocdir}/%{name}-%{version}
 cp -p %{_builddir}/%{name}-%{version}/ChangeLog %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/doc/* %{buildroot}%{_defaultdocdir}/%{name}-%{version}
 
 %clean
 rm -rf %{buildroot}
@@ -53,10 +56,14 @@ rm -rf %{buildroot}
 %{_sysconfdir}/*
 %{_initrddir}/*
 %{_bindir}/*
+%doc COPYRIGHT ChangeLog README RELEASE_NOTES
 %{_mandir}/man8/*
-%{_defaultdocdir}/*
 
 
 %changelog
+* Wed Dec 01 2010 Jon Kent <jon.kent at, gmail.com> 1.1.0-1
+- Cleaned up description
+- Moved docs to use %doc tag
+- Cleaned up %build section
 * Sun Nov 21 2010 Jon Kent <jon.kent at, gmail.com> 1.1.0-1
 - First release of ptpd for Fedora
