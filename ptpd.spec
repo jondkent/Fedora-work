@@ -39,10 +39,10 @@ mkdir -p  %{buildroot}%{_initrddir}
 mkdir -p  %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_mandir}/man8/
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p /etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
-cp -p /etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
-cp -p /src/ptpd %{buildroot}/%{_bindir}
-cp -p /src/ptpd.8 %{buildroot}/%{_mandir}/man8/
+cp -p etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
+cp -p etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
+cp -p src/ptpd %{buildroot}/%{_bindir}
+cp -p src/ptpd.8 %{buildroot}/%{_mandir}/man8/
 
 %clean
 rm -rf %{buildroot}
