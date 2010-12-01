@@ -23,8 +23,7 @@ PTPd can run on most 32-bit or 64-bit, little- or big-endian processors. It
 does not require an FPU, so it is great for embedded processors.
 
 %prep
-%setup -a 0
-# add in fedora init script and sysconfig
+# extract first source implicitly and add in fedora init script and sysconfig
 %setup -a 1
 
 %build
@@ -61,5 +60,6 @@ rm -rf %{buildroot}
 - Cleaned up description
 - Moved docs to use %doc tag
 - Cleaned up %build section
+- Cleaned up the src and init/sysconfig extraction
 * Sun Nov 21 2010 Jon Kent <jon.kent at, gmail.com> 1.1.0-1
 - First release of ptpd for Fedora
