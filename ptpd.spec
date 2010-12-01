@@ -29,7 +29,7 @@ does not require an FPU, so it is great for embedded processors.
 
 %build
 cd src
-make ptpd
+CFLAGS="%{optflags}" make ptpd
 
 
 %install
@@ -39,14 +39,10 @@ mkdir -p  %{buildroot}%{_initrddir}
 mkdir -p  %{buildroot}%{_sysconfdir}/sysconfig
 mkdir -p %{buildroot}%{_mandir}/man8/
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
-cp -p %{_builddir}/%{name}-%{version}/etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
-cp -p %{_builddir}/%{name}-%{version}/src/ptpd %{buildroot}/%{_bindir}
-cp -p %{_builddir}/%{name}-%{version}/src/ptpd.8 %{buildroot}/%{_mandir}/man8/
-cp -p %{_builddir}/%{name}-%{version}/COPYRIGHT %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/README %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/RELEASE_NOTES %{buildroot}%{_defaultdocdir}/%{name}-%{version}
-cp -p %{_builddir}/%{name}-%{version}/ChangeLog %{buildroot}%{_defaultdocdir}/%{name}-%{version}
+cp -p /etc/init.d/ptpd %{buildroot}/%{_initddir}/ptpd
+cp -p /etc/sysconfig/ptpd %{buildroot}/%{_sysconfdir}/sysconfig
+cp -p /src/ptpd %{buildroot}/%{_bindir}
+cp -p /src/ptpd.8 %{buildroot}/%{_mandir}/man8/
 
 %clean
 rm -rf %{buildroot}
